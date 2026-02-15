@@ -55,7 +55,7 @@ def check_cisia():
                 data_prova = cols[7].text.strip()  # Coluna 8: Data do teste
 
                 # LOGICA: Apenas CENT@CASA e Status 'POSTI DISPONIBILI'
-                if modalidade == "CENT@UNI" and "POSTI DISPONIBILI" in status:
+                if modalidade == "CENT@CASA" and "POSTI DISPONIBILI" in status:
                     info = f"🏛 <b>{universidade}</b>\n📅 Data: {data_prova}"
                     vagas_encontradas.append(info)
 
