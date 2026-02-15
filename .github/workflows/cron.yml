@@ -1,0 +1,29 @@
+name: Cisia Monitor
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # Roda a cada 15 minutos
+  workflow_dispatch:        # Permite que você rode manualmente clicando num botão no site do GitHub
+
+jobs:
+  run-monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+
+      - name: Executar Script
+        env:
+          # Aqui é onde o GitHub liga os segredos do cofre às variáveis do Python
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python monitor.py
