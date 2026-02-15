@@ -50,7 +50,7 @@ def check_cisia():
             # Verificação mínima de colunas para evitar erros de leitura
             if len(cols) >= 7:
                 modalidade = cols[0].text.strip()  # Coluna 1: CENT@CASA ou CENT@UNI
-                universidade = cols[1].text.strip()  # Coluna 2: Nome da Uni
+                universidade = cols[1].text.strip()  # Coluna 2: Nome da Universidade
                 status = cols[6].text.strip().upper()  # Coluna 7: Status da vaga
                 data_prova = cols[7].text.strip()  # Coluna 8: Data do teste
 
